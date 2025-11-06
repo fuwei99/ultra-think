@@ -7,13 +7,20 @@ RUN apk add --no-cache libc6-compat
 
 WORKDIR /app
 
+# Enable Corepack and install pnpm
+RUN corepack enable && corepack prepare pnpm@10.14.0 --activate
+
 # Install dependencies based on the preferred package manager
 COPY package.json pnpm-lock.yaml ./
-RUN yarn global add pnpm && pnpm install --frozen-lockfile
+RUN pnpm install --frozen-lockfile
 
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /app
+
+# Enable Corepack and install pnpm for the builder stage
+RUN corepack enable && corepack prepare pnpm@10.14.0 --activate
+
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
@@ -22,7 +29,7 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
-RUN yarn run build:standalone
+RUN pnpm run build:standalone
 
 # Production image, copy all the files and run next
 FROM base AS runner
