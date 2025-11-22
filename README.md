@@ -20,8 +20,40 @@
 
 </div>
 
-参考： https://github.com/u14app/deep-research / https://github.com/lyang36/IMO25 实现
+# Automated DeepThink API
 
-拥有 deep-research 的全部功能,工作流采用 imo25 魔改版,优化了对通用任务的适应性
+An automated reasoning engine designed to solve complex problems through a structured, iterative process. This project packages a sophisticated "thought process" into a simple-to-use API, inspired by methodologies capable of tackling challenges like IMO problems.
+
+## Core Workflow
+
+The engine employs a multi-step workflow to ensure robust and well-refined solutions:
+
+1.  **Deconstruct:** The initial problem is broken down into smaller, manageable sub-problems.
+2.  **Reason:** An initial solution or line of thought is generated for the sub-problem.
+3.  **Critique:** The generated solution is critically evaluated to identify flaws, inconsistencies, or areas for improvement.
+4.  **Optimize:** The solution is refined and improved based on the critique.
+5.  **Iterate:** The Reason-Critique-Optimize cycle is repeated multiple times to progressively enhance the quality of the output.
+6.  **Validation:** The solution passes through several internal checks to verify its correctness and coherence.
+7.  **Consolidate:** The final, validated answers for all sub-problems are synthesized into a comprehensive final response.
+
+## Features
+
+-   **Bring Your Own Key (BYOK):** Easily integrate your own API keys.
+-   **Multi-Provider Support:** Compatible with a wide range of major LLM providers:
+    -   GPT
+    -   DeepSeek
+    -   Gemini
+    -   Grok
+    -   Claude
+    -   Hugging Face
+-   **General-Purpose Optimization:** While inspired by complex academic problems, the workflow is optimized for adaptability across various general-purpose tasks.
+-   **API-Based:** Simple to integrate into your own applications and services.
+
+## Acknowledgements
+
+This project is based on the principles and architectures found in:
+-   [u14app/deep-research](https://github.com/u14app/deep-research)
+-   [lyang36/IMO25](https://github.com/lyang36/IMO25)
+
 
 
